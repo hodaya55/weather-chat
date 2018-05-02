@@ -1,0 +1,46 @@
+.input-city-form,
+.comments-form {
+    display: flex;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.city-weather {
+    box-shadow: 2px 1px 20px 1px black;
+    margin: 25px;
+    padding: 15px;
+}
+
+.city-temp-list {
+    padding-left: 0px;
+}
+
+.remove-city-weather:hover {
+    text-decoration: none;
+}
+
+.remove-city-weather {
+    text-decoration: none;
+    color: #ff5351;
+    font-size: 17px;
+}
+
+.fa-trash{
+    font-size: 25px;
+    padding-top: 16px;
+}
+
+.comments-list{
+    margin-bottom: 15px;
+}
+
+.errorMsg{
+    color:red;
+    font-size:25px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+}
