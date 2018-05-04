@@ -100,8 +100,8 @@ function autocomplete(inp, arr) {
   }
   
   // var cityarray = require('./city.list').cityarray;
-console.log("im in script");
-console.log(cityarray[0]);
+console.log("im in autocomplete");
+//console.log(cityarray[0]);
 
 
 

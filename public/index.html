@@ -21,16 +21,17 @@
                 <h1>Weather chat</h1>
             </div>
 
-            <!-- <form class="input-city-form" > -->
             <form class="input-city-form" autocomplete="off">
-                <!-- <input type="text" id="city-name" class="form-control" placeholder="Enter city"> -->
-                <input id="city-name" type="text"  placeholder="Enter city">
+                <div class="autocomplete">
+                    <input id="city-name" type="text" class="form-control" placeholder="Enter city">
+                </div>
+                <!-- <input id="city-name" type="text"  placeholder="Enter city"> -->
                 <button type="submit" class="btn btn-primary button-get-temp">Get Temp</button>
             </form>
 
             <p class="errorMsg"></p>
 
-            <img class="load" src="loading.gif" alt="Loading" title="Loading"  />
+            <img class="load" src="loading.gif" alt="Loading" title="Loading" />
 
             <ul class="city-temp-list">
             </ul>
@@ -41,7 +42,8 @@
 
     <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="datejs/src/core/parser.js"></script>
-  
+
+    <script src="city-list.js"></script>
     <script src="autocomplete.js"></script>
     <script src="script.js"></script>
 

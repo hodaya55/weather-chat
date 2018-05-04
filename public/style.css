@@ -69,34 +69,26 @@ font-size: 1.5em;
 .comment{
     line-height: 20px;
     background-color: #F5F6C9;
-    border-radius: 7px;
+    border-radius: 6px;
+    font-style: italic;
 }
 
 
+.fa-comments-o{
+padding-right: 10px;
+}
 
 
 /******/
 
-.autocomplete {
+
+.autocomplete, 
+.input-city-form{
     /*the container must be positioned relative:*/
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
   }
-  #city-name {
-    border: 1px solid transparent;
-    background-color: #f1f1f1;
-    padding: 10px;
-    font-size: 16px;
-  }
-  #city-name[type=text] {
-    background-color: #f1f1f1;
-    width: 100%;
-  }
-  #city-name[type=submit] {
-    background-color: DodgerBlue;
-    color: #fff;
-    cursor: pointer;
-  }
+  
   .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
@@ -123,4 +115,3 @@ font-size: 1.5em;
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
-
