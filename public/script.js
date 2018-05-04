@@ -16,6 +16,7 @@ var _getFromLocalStorage = function () {
 // update city-weather array from local storage soon as the page loads
 cityWeatherArray = _getFromLocalStorage();
 
+$('.load').hide();
 
 var updateCityPost = function () {
     console.log("in update:");
@@ -27,24 +28,23 @@ var updateCityPost = function () {
         console.log("in loop:");
         console.log(cityWeatherArray[i]);
 
-        // לפני כן היה רשום דיב במקום אל איי
         var weather = `
-<li class="city-weather">
+<div class="city-weather">
     <div class="header">
-       <h3>${cityWeatherArray[i].name.toUpperCase()} </h3> <a role="button" class="remove-city-weather"> <i class="fa fa-trash"></i> </a>
+       <h3><strong>${cityWeatherArray[i].name}</strong> </h3> <a role="button" class="remove-city-weather"> <i class="fa fa-trash"></i> </a>
     </div> 
-  <p>${Math.round(cityWeatherArray[i].temp.tCelsius) + " °C " + Math.round(cityWeatherArray[i].temp.tFahrenheit) + " °F " + cityWeatherArray[i].date} </p>
+  <p class="temp-date" >${cityWeatherArray[i].temp.tCelsius + " °C " + cityWeatherArray[i].temp.tFahrenheit + " °F " + cityWeatherArray[i].date} </p>
   <div class="comments-container" >
-    <ul class="comments-list"> 
+    <ul class="comments-list rounded"> 
     </ul>
     <form class="comments-form" >
-       <input type="text" class="comment-name form-control" placeholder="Comment about the weather in ${cityWeatherArray[i].name.toUpperCase()}"> 
-       <button type="button" class="btn btn-sm btn-primary add-comment">Post Comment</button>
+       <input type="text" class="comment-name form-control" placeholder="Comment about the weather in ${cityWeatherArray[i].name}"> 
+       <button type="submit" class="btn btn-sm btn-success add-comment">Post Comment</button>
     </form>
+    <p class="errorMsgComm"> You can't enter empty comment</p>
    </div>
-</li>
+</div>
     `;
-        // console.log(weather);
         $('.city-temp-list').append(weather);
     }
 
@@ -54,24 +54,27 @@ var updateCityPost = function () {
 var fetch = function (city) {
     $.get({
         url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=d703871f861842b79c60988ccf3b17ec",
+
+        beforeSend: function () {
+            $('.load').show();
+        },
         success:// yourFunction		
             function (data) {
                 console.log('in fetch:');
                 console.log(data);
 
+                $('.load').hide();
+
                 var d = new Date();
-                var month = d.getUTCMonth() + 1; //months from 1-12
-                var day = d.getUTCDate();
-                var year = d.getUTCFullYear();
-                var h = (d.getHours() < 10 ? '0' : '') + d.getHours();
-                var m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-                var date = h + ":" + m + " on " + day + "/" + month + "/" + year;
+                var date = (d.getHours() < 10 ? '0' : '') + d.getHours() + ":"
+                    + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes() + " on " +
+                    d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
 
                 var cityPost = {
                     name: data.name,
                     temp: {
-                        tCelsius: data.main.temp, //  Celsius
-                        tFahrenheit: data.main.temp * 9 / 5 + 32 //  Fahrenheit
+                        tCelsius: Math.round(data.main.temp), //  Celsius
+                        tFahrenheit: Math.round(data.main.temp * 1.8 + 32) //  Fahrenheit
                     },
                     date: date,
                     comments: []
@@ -87,7 +90,9 @@ var fetch = function (city) {
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("not found");
             console.log(textStatus);
-            $('.errorMsg').text("Not found.").fadeOut(4000);;
+            $('.load').hide();
+            $('.errorMsg').text("Not found.").css("display", "block").fadeOut(4000);
+
         }
 
     });
@@ -97,25 +102,19 @@ var fetch = function (city) {
 
 var createCityPost = function (cityPost) {
     console.log("in create:")
-    cityWeatherArray.push(cityPost);
-    console.log("cityWeatherArray:");
-    console.log(cityWeatherArray);
+    cityWeatherArray.unshift(cityPost);
     // save
     _saveToLocalStorage();
 }
 
-// var createComment = function (text, cityPostIndex, $commentsList) {
 var createComment = function (text, cityPostIndex) {
     var comment = { text: text };
-    console.log("index: ");
-    console.log(cityPostIndex);
     // pushing the comment into the correct cityWerater array
     cityWeatherArray[cityPostIndex].comments.push(comment);
     // save
     _saveToLocalStorage();
     //render comments 
     updateComments();
-    // $commentsList.append(`<li class="comment" > ${text} </li>`);
 }
 
 var removeCityPost = function ($clickedCityPost, index) {
@@ -132,20 +131,21 @@ var updateComments = function () {
 
     for (var i = 0; i < cityWeatherArray.length; i += 1) {
         // the current post in the iteration
-        var post = cityWeatherArray[i];
+        var cityPost = cityWeatherArray[i];
 
         // finding the "post" element in the page that is "equal" to the
-        // current post we're iterating on
-        var $post = $('.city-temp-list').find('.city-weather').eq(i);
+        // current post index we're iterating on
+        var $cityPost = $('.city-temp-list').find('.city-weather').eq(i);
 
         // iterate through each comment in our post's comments array
-        for (var j = 0; j < post.comments.length; j += 1) {
+        for (var j = 0; j < cityPost.comments.length; j += 1) {
             // the current comment in the iteration
-            var comment = post.comments[j];
+            var comment = cityPost.comments[j];
 
             // append the comment to the post we wanted to comment on
-            $post.find('.comments-list').append(
-                '<li class="comment">' + comment.text + '</li>'
+            $cityPost.find('.comments-list').append(
+                // '<li class="comment">' + comment.text + '</li>'
+                '<p class="comment">' + comment.text + '</p>'
             );
         };
     };
@@ -155,13 +155,17 @@ var updateComments = function () {
 
 // Event Handlers below
 
-$('.button-get-temp').on('click', function () {
-    var city = $('#city-name').val();
-    if (city === '') {
-        $('.errorMsg').text("Please enter city name").fadeOut(4000);
+$('.button-get-temp').on('click keyup', function () {
+    event.preventDefault();
+    if (event.keyCode === 13 || event.type === 'click') {
+        var city = $('#city-name').val();
+        if (city === '')
+            // $('.errorMsg').text("Please enter city name").css("display", "block").fadeOut(4000);
+            $('.errorMsg').text("Please enter city name").show().fadeOut(4000);
+
+        else
+            fetch(city);
     }
-    else
-        fetch(city);
 })
 
 $('.city-temp-list').on('click', '.remove-city-weather', function () {
@@ -170,14 +174,33 @@ $('.city-temp-list').on('click', '.remove-city-weather', function () {
     removeCityPost($clickedItem, index);
 })
 
-$('.city-temp-list').on('click', '.add-comment', function () {
-    var text = $(this).siblings('.comment-name').val();
-    var $commentsList = $(this).closest('.comments-form').siblings('.comments-list');
-    // finding the index of the cityPost(li element) in the page...will use it in #createComment
-    var cityPostIndex = $(this).closest('.city-weather').index();
-    createComment(text, cityPostIndex, $commentsList);
-     $(this).siblings('.comment-name').val("");
-    
+$('.city-temp-list').on('click keyup', '.add-comment', function (event) {
+    event.preventDefault();
+    // var text = $(this).siblings('.comment-name').val();
+    // if (text !== '') {
+    //     if (event.keyCode === 13 || event.type === 'click') {
+    //         var $commentsList = $(this).closest('.comments-form').siblings('.comments-list');
+    //         // finding the index of the cityPost in the page...will use it in #createComment
+    //         var cityPostIndex = $(this).closest('.city-weather').index();
+    //         createComment(text, cityPostIndex);
+    //         $(this).siblings('.comment-name').val("");
+    //     }
+    // }
+    // else
+    //     $('.errorMsgComm').show().fadeOut(4000);
+    if (event.keyCode === 13 || event.type === 'click') {
+        var text = $(this).siblings('.comment-name').val();
+        if (text !== '') {
+            var $commentsList = $(this).closest('.comments-form').siblings('.comments-list');
+            // finding the index of the cityPost in the page...will use it in #createComment
+            var cityPostIndex = $(this).closest('.city-weather').index();
+            createComment(text, cityPostIndex);
+            $(this).siblings('.comment-name').val("");
+        }
+        else
+        $(this).closest('.comments-form').siblings('.errorMsgComm').show().fadeOut(4000);
+    }
+
 })
 
 updateCityPost();
