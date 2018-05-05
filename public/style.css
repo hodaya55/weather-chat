@@ -3,6 +3,11 @@
     display: flex;
 }
 
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -82,10 +87,12 @@ padding-right: 10px;
 /******/
 
 
-.autocomplete, 
-.input-city-form{
+.autocomplete
+/* , .input-city-form */
+{
     /*the container must be positioned relative:*/
     position: relative;
+    width: 570px;
     /* display: inline-block; */
   }
   

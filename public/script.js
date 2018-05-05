@@ -68,7 +68,7 @@ var fetch = function (city) {
             console.log("not found");
             console.log(textStatus);
             $('.load').hide();
-            $('.errorMsg').text("Not found.").css("display", "block").fadeOut(4000);
+            $('.errorMsg').text("Not found.").show().fadeOut(4000);
         }
     });
 }
