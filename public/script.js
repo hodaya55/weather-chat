@@ -140,7 +140,7 @@ var updateComments = function () {
                 // append the comment to the post we wanted to comment on
                 $cityPost.find('.comments-list').append(
                     '<p class="comment"> <i class="fa fa-comments-o"></i>' + 
-                    comment.text + '</p>'
+                   '"'+ comment.text + '" </p>'
                 );
             };
         }

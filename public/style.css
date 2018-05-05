@@ -1,3 +1,7 @@
+/* body{
+    background-size: cover;
+} */
+
 .input-city-form,
 .comments-form {
     display: flex;
@@ -6,6 +10,10 @@
 .row {
     margin-right: 0;
     margin-left: 0;
+    
+    /* background: url(https://images2.alphacoders.com/143/143362.jpg) no-repeat fixed; */
+    background: url("background3.jpg") no-repeat fixed;
+    background-size: cover;
 }
 
 .header {
@@ -17,7 +25,8 @@
     box-shadow: 2px 1px 20px 1px black;
     margin: 25px;
     padding: 15px;
-    background-color: #337ab7d1;
+    /* background-color: #337ab7d1; */
+    background-color: #ffffffa6;
     border-radius: 10px;
 }
 
@@ -31,7 +40,8 @@
 
 .remove-city-weather {
     text-decoration: none;
-    color: red;
+    /* color: red; */
+    color: #da0505;
     font-size: 17px;
 }
 
@@ -48,7 +58,7 @@
 
 .errorMsg{
     color:red;
-    font-size:25px;
+    font-size:20px;
     margin-left: 50px;
     margin-top: 20px;
 }
@@ -57,6 +67,7 @@
     margin-left: 266px; 
     margin-top: 25px;
     margin-bottom: 12px;
+    mix-blend-mode: multiply;
  }
 
 .errorMsgComm{
@@ -73,16 +84,28 @@ font-size: 1.5em;
 
 .comment{
     line-height: 20px;
-    background-color: #F5F6C9;
+    /* background-color: #F5F6C9; */
     border-radius: 6px;
     font-style: italic;
+    background-color: #1568e5ba;
+    color: white;
 }
 
+h1{
+    color: white;
+    font-weight: bold;
+    font-family: arial;
+}
 
 .fa-comments-o{
 padding-right: 10px;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #053661c2;
+    border-color: #d5e7f7c9;
+}
 
 /******/
 
