@@ -96,10 +96,12 @@ h1{
     color: white;
     font-weight: bold;
     font-family: arial;
+    text-shadow: 0 0 15px black;
 }
 
 .fa-comments-o{
-padding-right: 10px;
+    padding-right: 10px;
+    padding-left: 5px;
 }
 
 .btn-primary {
@@ -113,9 +115,12 @@ padding-right: 10px;
     padding: 12px;
     border-radius: 5px;
     margin-bottom: 15px;
+    background: #ffffffad;
 }
 
-
+.list{
+    padding-left: 0px;
+}
 /*******autocomplete********/
 .autocomplete
 /* , .input-city-form */
