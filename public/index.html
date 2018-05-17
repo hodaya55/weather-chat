@@ -13,9 +13,9 @@
     <title>weather-chat</title>
 </head>
 
-<body >
+<body>
 
-    <div class="row" >
+    <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="page-header">
                 <h1>Weather chat</h1>
@@ -26,10 +26,13 @@
                     <input id="city-name" type="text" class="form-control" placeholder="Enter city">
                 </div>
                 <!-- <input id="city-name" type="text"  placeholder="Enter city"> -->
-                <button type="submit" class="btn btn-primary button-get-temp">Get Temp</button>
-                <button type="button" class="btn btn-danger sortByName"> sort By name</button>
-                <button type="button" class="btn btn-warning sortByTemp"> sort By temp</button>
-                <button type="button" class="btn btn-success sortByDate"> sort By date</button>
+                <!-- <button type="submit" class="btn btn-primary button-get-temp">Get Temp</button> -->
+                <button type="submit" class="btn btn-primary button-get-temp">
+                    <i class="fa fa-search"></i>
+                </button>
+                <button type="button" id=1 class="btn btn-danger sortByName"> sort By name</button>
+                <button type="button" id=2 class="btn btn-warning sortByTemp"> sort By temp</button>
+                <button type="button" id=3 class="btn btn-success sortByDate"> sort By date</button>
             </form>
 
             <p class="errorMsg"></p>
@@ -48,14 +51,6 @@
         <button class="yes">Yes</button>
         <button class="no">No</button>
     </div>
-    
-    <!-- <button onclick='doConfirm("Are you sure?", function yes()
-    {
-         alert("YEs")
-    }, function no()
-    {
-        alert("no")
-    });'>submit</button> -->
 
     <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="datejs/src/core/parser.js"></script>

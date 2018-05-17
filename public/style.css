@@ -1,4 +1,4 @@
-body{
+body {
     background: url("background3.jpg") no-repeat fixed;
     background-size: cover;
 }
@@ -15,7 +15,8 @@ body{
     background-size: cover; */
 }
 
-.header {
+.header,
+.line {
     display: flex;
     justify-content: space-between;
 }
@@ -39,67 +40,70 @@ body{
 
 .remove-city-weather {
     text-decoration: none;
-    /* color: red; */
     color: #da0505;
     font-size: 17px;
 }
 
-.fa-trash{
+.fa-trash,
+.fa-times-circle {
     font-size: 25px;
     padding-top: 16px;
 }
 
-.comments-list{
+.fa-times-circle {
+    padding-top: 10px;
+}
+
+.comments-list {
     margin-bottom: 15px;
     border-radius: 10px;
     padding-left: 0px;
 }
 
-.errorMsg{
-      /* color: red; */
-      color:white;
-    font-size:20px;
+.errorMsg {
+    /* color: red; */
+    color: white;
+    font-size: 20px;
     margin-left: 50px;
     margin-top: 20px;
 }
 
- .load{
-    margin-left: 266px; 
+.load {
+    margin-left: 266px;
     margin-top: 25px;
     margin-bottom: 12px;
-    mix-blend-mode: multiply;
- }
+}
 
-.errorMsgComm{
+.errorMsgComm {
     color: red;
     margin-left: 13px;
     margin-top: 7px;
     display: none;
 }
 
-.temp-date{
-font-family: Georgia, 'Times New Roman', Times, serif;
-font-size: 1.5em;
+.temp-date {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5em;
 }
 
-.comment{
+.comment {
     line-height: 20px;
     border-radius: 6px;
     font-style: italic;
-      /* background-color: #F5F6C9; */
+    /* background-color: #F5F6C9; */
     /* background-color: #1568e5ba; */
     background-color: rgba(7, 26, 119, 0.64);
     color: white;
 }
 
-h1{
+h1 {
     color: white;
     font-weight: bold;
     font-family: arial;
     text-shadow: 0 0 15px black;
 }
 
-.fa-comments-o{
+.fa-comments-o {
     padding-right: 10px;
     padding-left: 5px;
 }
@@ -110,7 +114,7 @@ h1{
     border-color: #d5e7f7c9;
 }
 
-.li-comment{
+.li-inner-post {
     box-shadow: inset 0 0 8px 0px black;
     padding: 12px;
     border-radius: 5px;
@@ -118,20 +122,28 @@ h1{
     background: #ffffffad;
 }
 
-.list{
+.list {
     padding-left: 0px;
 }
+
+.comment:hover {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
 /*******autocomplete********/
+
 .autocomplete
 /* , .input-city-form */
-{
+
+    {
     /*the container must be positioned relative:*/
     position: relative;
     width: 570px;
     /* display: inline-block; */
-  }
-  
-  .autocomplete-items {
+}
+
+.autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
     border-bottom: none;
@@ -141,28 +153,29 @@ h1{
     top: 100%;
     left: 0;
     right: 0;
-  }
-  .autocomplete-items div {
+}
+
+.autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
-  }
-  .autocomplete-items div:hover {
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
     /*when hovering an item:*/
-    background-color: #e9e9e9; 
-  }
-  .autocomplete-active {
+    background-color: #e9e9e9;
+}
+
+.autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
-  }
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
 
+/*** confirm delete message***/
 
-
-  /*** confirm ***/
-  #confirmBox
-{
+#confirmBox {
     display: none;
     background-color: #eee;
     border-radius: 5px;
@@ -171,13 +184,14 @@ h1{
     width: 300px;
     left: 50%;
     margin-left: -150px;
-    top:0;
+    top: 0;
     padding: 6px 8px 8px;
     box-sizing: border-box;
     text-align: center;
+    margin-top: 10px;
 }
+
 #confirmBox button {
-    background-color: #ccc;
     display: inline-block;
     border-radius: 3px;
     border: 1px solid #aaa;
@@ -185,13 +199,18 @@ h1{
     text-align: center;
     width: 80px;
     cursor: pointer;
+    background: #2f587e;
+    color: white;
+    font-weight: bold;
 }
-#confirmBox button:hover
-{
-    background-color: #ddd;
+
+#confirmBox button:hover {
+    color: #2f587e;
+    background: white;
+    font-weight: bold;
 }
-#confirmBox .message
-{
-    text-align: left;
+
+#confirmBox .message {
     margin-bottom: 8px;
+    font-weight: bold;
 }
