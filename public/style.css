@@ -11,8 +11,6 @@ body {
 .row {
     margin-right: 0;
     margin-left: 0;
-    /* background: url("background3.jpg") no-repeat fixed;
-    background-size: cover; */
 }
 
 .header,
@@ -61,7 +59,6 @@ body {
 }
 
 .errorMsg {
-    /* color: red; */
     color: white;
     font-size: 20px;
     margin-left: 50px;
@@ -90,8 +87,6 @@ body {
     line-height: 20px;
     border-radius: 6px;
     font-style: italic;
-    /* background-color: #F5F6C9; */
-    /* background-color: #1568e5ba; */
     background-color: rgba(7, 26, 119, 0.64);
     color: white;
 }
