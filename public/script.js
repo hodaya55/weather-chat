@@ -18,7 +18,7 @@ $('.load').hide();
 // using API
 var fetch = function (city) {
     $.get({
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=d703871f861842b79c60988ccf3b17ec",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=d703871f861842b79c60988ccf3b17ec",
         beforeSend: function () {
             $('.load').show();
         },
@@ -44,7 +44,7 @@ var _createInnerPost = function (i, j) {
         '<p class="temp-date" >' + cityObj.details[j].temp.tCelsius + " °C "
         + cityObj.details[j].temp.tFahrenheit + " °F "
         + cityObj.details[j].date + " " + cityObj.details[j].temp.description + " " +
-        '<img src="http://openweathermap.org/img/w/' + cityObj.details[j].temp.icon + '.png"> </p>' +
+        '<img src="https://openweathermap.org/img/w/' + cityObj.details[j].temp.icon + '.png"> </p>' +
         '<a role="button" class="remove-inner-post"> <i class="fa fa-times-circle"></i> </a>' +
         '</div>' +
         '<div class="comments-container" >' +
